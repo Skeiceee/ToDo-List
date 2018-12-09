@@ -1,0 +1,27 @@
+@layout('main')
+  @section('css')
+    {{ style('css/details') }}
+  @endsection
+  @section('content')
+    <form action= "{{'/tasks/' + task.id + '?_method=PUT'}}" method="POST" >
+      {{ csrfField() }}
+      <div class="container mx-auto mt-4">
+        <div class="row">
+          <div class="col-2 col-md-1 col-sm-2 col-lg-1">
+            <a href="/tasks/{{task.id}}"><i class="fas fa-chevron-circle-left fa-3x"></i></a>
+          </div>
+          <div class="col-10 col-md-11 col-sm-10 col-lg-11">
+            <div class="form-group">
+              <label for="title"><span class=" text-roboto">Title</span></label>
+              <input class="form-control text-raleway" type="text" name="title" value="{{task.title}}">
+            </div>
+            <div class="form-group">
+              <label for="description text-roboto"><span class=" text-roboto">Description</span></label>
+              <input class="form-control text-raleway" type="text" name="description" value="{{task.description}}">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block mt-4 text-roboto">Update</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  @endsection

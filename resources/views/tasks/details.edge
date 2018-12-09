@@ -1,0 +1,29 @@
+@layout('main')
+  @section('css')
+    {{ style('css/details') }}
+  @endsection
+  @section('content')
+      <div class="container mx-auto mt-4">
+        <div class="row">
+          <div class="col-2 col-md-1 col-sm-2 col-lg-1">
+            <a href="/tasks"><i class="fas fa-chevron-circle-left fa-3x"></i></a>
+
+            <a href="/tasks/edit/{{task.id}}"><i class="fas fa-pencil-alt fa-3x mt-4"></i></a>
+
+            <form action="{{ '/tasks/' + task.id + '?_method=DELETE'}}" method="POST">
+              {{ csrfField() }}
+              <button type="submit"><a href="#"><i class="fas fa-eraser fa-3x mt-4"></i></a></button>
+            </form>
+
+          </div>
+          <div class="col-10 col-md-11 col-sm-10 col-lg-11">
+            <div class="card">
+              <div class="card-body text-center">
+                <h1 class="text-roboto">{{task.title}}</h1>
+                <p class="text-raleway">{{task.description}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  @endsection

@@ -1,0 +1,29 @@
+@layout('main')
+  @section('css')
+    {{ style('css/index')}}
+  @endsection
+  @section('content')
+    <div class="container mx-auto mt-4">
+      <div class="row">
+        <div class="col-2 col-md-1 col-sm-2 col-lg-1">
+          <a href="/tasks/add"><i class="fas fa-plus-circle fa-3x" ></i></a>
+        </div>
+        <div class="col-10 col-md-11 col-sm-10 col-lg-11">
+          <ul class="list-group">
+            @if(tasks == 0)
+            <li class="list-group-item text-center">
+              <div class="center-list text-raleway">Add new task!</div>
+              <span class="center-list text-raleway" >I'am empty :(</span>
+            </li>
+            @endif
+            @each(task in tasks)
+              <li class="list-group-item">
+                <span class="center-list text-raleway">{{ task.title }}</span>
+                <a href="/tasks/{{task.id}}"><i class="fas fa-info-circle float-right fa-2x"></i></a>
+              </li>
+            @endeach
+          </ul>
+        </div>
+      </div>
+    </div>
+  @endsection
